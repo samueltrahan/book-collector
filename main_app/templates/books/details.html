@@ -31,7 +31,7 @@
         {% for pages in book.pages_set.all %}
           <tr>
             <td>{{pages.date}}</td>
-            <td>{{pages.get_pagesRead_display}}</td>
+            <td>{{pages.pagesRead}}</td>
           </tr>
         {% endfor %}
       </tbody>
