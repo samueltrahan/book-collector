@@ -18,3 +18,8 @@ class Book(models.Model):
 class Pages(models.Model):
     date = models.DateField()
     pages = models.IntegerField()
+
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.get_book_display()} on {self.date}"

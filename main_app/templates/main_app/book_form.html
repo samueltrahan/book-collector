@@ -2,10 +2,12 @@
 
 {% block content %}
  {% if object %}
+ <div id="add-page">
     <h1>Edit <span class="teal-text">{{object.title}}</span></h1>
   {% else %}
     <h1>Add Book</h1>
   {% endif %}
+ </div>
   <!-- Leaving the action empty makes the form post to the same url used to display it -->
   <form action="" method="post">
     <!-- Django requires the following for security purposes -->
