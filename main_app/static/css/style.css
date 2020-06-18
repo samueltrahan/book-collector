@@ -2,6 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: cornflowerblue;
 }
 
 main {
@@ -19,4 +20,8 @@ footer.page-footer {
 
 .page-footer {
     background-color: cornflowerblue;
+}
+
+#home-page {
+    color: darkgray;
 }

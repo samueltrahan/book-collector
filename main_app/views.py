@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Book
 
 
@@ -17,3 +18,16 @@ def books_index(request):
 def book_details(request, book_id):
     book = Book.objects.get(id=book_id)
     return render(request, 'books/details.html', {'book': book})
+
+class BookCreate(CreateView):
+    model = Book
+    fields = '__all__'
+    success_url = '/books/'
+
+class BookUpdate(UpdateView):
+    model = Book
+    fields = ['author', 'description']
+
+class BookDelete(DeleteView):
+    model = Book
+    success_url = '/books/'
