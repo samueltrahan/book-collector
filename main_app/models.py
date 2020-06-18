@@ -16,10 +16,13 @@ class Book(models.Model):
         return reverse('details', kwargs={'book_id': self.id})
 
 class Pages(models.Model):
-    date = models.DateField()
-    pages = models.IntegerField()
+    date = models.DateField('reading date')
+    pagesRead = models.IntegerField()
 
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.get_book_display()} on {self.date}"
+        return f"{self.get_pagesRead_display()} on {self.date}"
+
+    class Meta:
+        ordering = ['-date']

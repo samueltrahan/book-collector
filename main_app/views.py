@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Book
+from .forms import PagesForm
 
 
 
@@ -17,7 +18,16 @@ def books_index(request):
 
 def book_details(request, book_id):
     book = Book.objects.get(id=book_id)
-    return render(request, 'books/details.html', {'book': book})
+    pages_form = PagesForm()
+    return render(request, 'books/details.html', {'book': book, 'pages_form': pages_form})
+
+def add_pages(request, book_id):
+    form = PagesForm(request.POST)
+    if form.is_valid():
+        new_pages = form.save(commit=False)
+        new_pages.book_id = book_id
+        new_pages.save()
+    return redirect('details', book_id= book_id)
 
 class BookCreate(CreateView):
     model = Book
