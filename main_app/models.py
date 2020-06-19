@@ -3,11 +3,22 @@ from django.urls import reverse
 
 # Create your models here.
 
+class Reader(models.Model):
+    name = models.CharField(max_length=50)
+    favorite_book = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('readers_detail', kwargs={'pk': self.id})
+
 
 class Book(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     description = models.CharField(max_length=250)
+    readers = models.ManyToManyField(Reader)
 
     def __str__(self):
         return self.title

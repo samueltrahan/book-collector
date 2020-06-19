@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Book
+from django.views.generic import ListView, DetailView
+from .models import Book, Reader
 from .forms import PagesForm
 
 
@@ -41,3 +42,22 @@ class BookUpdate(UpdateView):
 class BookDelete(DeleteView):
     model = Book
     success_url = '/books/'
+
+
+class ReadersList(ListView):
+    model = Reader
+
+class ReadersDetail(DetailView):
+    model = Reader
+
+class ReadersCreate(CreateView):
+    model = Reader
+    fields = '__all__'
+
+class ReadersUpdate(UpdateView):
+    model = Reader
+    fields = ['favorite-book']
+
+class ReadersDelete(DeleteView):
+    model = Reader
+    success_url = '/readers/'
