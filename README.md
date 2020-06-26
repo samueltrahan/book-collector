@@ -1,6 +1,6 @@
 # BookCase
 
-[BookCase](bookcase.netlify.app)
+[BookCase](https://bookcase.netlify.app/)
 
 ----
 
