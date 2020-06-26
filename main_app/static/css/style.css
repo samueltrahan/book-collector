@@ -24,8 +24,12 @@ footer.page-footer {
 
 #home-page {
     color: rgb(160, 160, 160);
-    text-shadow: 2px 2px 2px white;
+    text-shadow: 2px 2px 2px black;
     text-align: center;
+}
+
+img {
+    height: 300px;
 }
 
 #about-page {
